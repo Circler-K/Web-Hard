@@ -27,25 +27,23 @@ if(@$set === 1){
 	echo "<br>";
 	echo "<br>";
 	if(is_dir("../data/".$_GET['user']."/".$_GET['path'])){
-	echo "asdf";
+		$d = dir("../data/".$_GET['user']."/".$_GET['path']);
+		//echo "Handle: " . $d->handle . "\n";
+		//echo "Path: " . $d->path . "\n";
+		while (false !== ($entry = $d->read())) {
+			if(@is_dir("../data/Circler/".$_GET['path']."".$entry)){
+				echo "dir : ";
+			}
+			else{
+				echo "file : ";
+			}
+			echo "<a href=../data/".$_GET['user']."/".$entry.">".$entry."</a><br>";
+		}
+		$d->close();
 	}
 	else{
 	echo "fdsa";
 	}
-	
-	$d = dir("../data/".$_GET['user']."/".$_GET['path']);
-	//echo "Handle: " . $d->handle . "\n";
-	//echo "Path: " . $d->path . "\n";
-	while (false !== ($entry = $d->read())) {
-		if(@is_dir("../data/Circler/".$_GET['path']."".$entry)){
-			echo "dir : ";
-		}
-		else{
-			echo "file : ";
-		}
-		echo "<a href=../data/".$_GET['user']."/".$entry.">".$entry."</a><br>";
-	}
-	$d->close();
  
  
  
