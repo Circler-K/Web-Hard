@@ -1,0 +1,60 @@
+<?php
+@session_start();
+if(!$_SESSION){ // if not logined
+		echo "<script>";
+		echo "alert('U Need Login'); history.go(-1);"; // NO access for none logined user
+		echo "</script>";
+}
+if($_SESSION['ID']==@$_GET['user']){
+	$set = 1;
+}
+else{
+	echo "<h1>No Access~!@#$%^&*</h1>";
+}
+?>
+
+
+
+<html>
+<body>
+<?php
+echo "<a href='../logout' ><button>logout</button></a><br><br><br><br><br><br>";
+if(@$set === 1){
+	//system("dir");
+	echo "<br><h1>Your Directory</h1>";
+	echo "<br><h2>Your Path : ".$_GET['path']."</h2>";
+	echo "<br>";
+	echo "<br>";
+	echo "<br>";
+	if(is_dir("../data/".$_GET['user']."/".$_GET['path'])){
+	echo "asdf";
+	}
+	else{
+	echo "fdsa";
+	}
+	
+	$d = dir("../data/".$_GET['user']."/".$_GET['path']);
+	//echo "Handle: " . $d->handle . "\n";
+	//echo "Path: " . $d->path . "\n";
+	while (false !== ($entry = $d->read())) {
+		if(@is_dir("../data/Circler/".$_GET['path']."".$entry)){
+			echo "dir : ";
+		}
+		else{
+			echo "file : ";
+		}
+		echo "<a href=../data/".$_GET['user']."/".$entry.">".$entry."</a><br>";
+	}
+	$d->close();
+ 
+ 
+ 
+}
+else{
+	echo "Something wrong....&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp|ω・｀)ノ";
+	echo "<a href='../index.html' ><button>main</button></a>";
+}
+?>
+
+</body>
+</html>

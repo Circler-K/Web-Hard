@@ -1,0 +1,21 @@
+<?php
+	@session_start();
+	if($_SESSION){
+		echo '<script>';
+		echo "alert('Already Login!!');";
+		echo "document.write(\"<meta http-equiv='refresh' content='0;url=../'>\");";
+		echo '</script>';
+	}
+?>
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Register_page</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<body>
+<?php
+	include("joinUI.html");
+?>
+</body>
+</html>	

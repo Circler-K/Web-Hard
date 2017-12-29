@@ -1,0 +1,19 @@
+<?php
+@session_start();
+?>
+<html>
+<head>
+</head>
+<body>
+<?php
+if($_SESSION){
+	//echo "<a href='./logout' ><button>logout</button></a>
+	//<a href='./join' ><button>Join</button></a>"
+	echo "<meta http-equiv='refresh' content='0;url=/FTP-Project/main?user=".$_SESSION['ID']."'>";
+}
+else{
+	echo "<a href='./login' ><button>Login</button></a><a href='./join' ><button>Join</button></a>";
+}
+?>
+</body>
+</html>
