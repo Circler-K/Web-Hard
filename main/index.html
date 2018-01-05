@@ -11,6 +11,10 @@ if($_SESSION['ID']==@$_GET['user']){
 else{
 	echo "<h1>No Access~!@#$%^&*</h1>";
 }
+if(preg_match("/\.\./i",@$_GET['path'])){
+	echo "NOP";
+	exit(0);
+}
 ?>
 
 
@@ -33,7 +37,7 @@ if(@$set === 1){
 		$d = dir("../data/".$_GET['user']."/".@$_GET['path']);
 		while (false !== ($entry = $d->read())) {
 			
-			if(@is_dir("../data/".$_GET['user']."/".$_GET['path']."".$entry."/")){
+			if(@is_dir("../data/".$_GET['user']."/".$_GET['path']."/".$entry."/")){
 				echo "dir : ";
 				//echo "<a href=../data/".$_GET['user']."/".$entry.">".$entry."</a><br>";
 				echo "<a href=./?user=".$_GET['user']."&path=".@$_GET_['path']."".$entry.">".$entry."</a><br>";
@@ -61,7 +65,7 @@ if(@$set === 1){
 	<br>
 	<button onclick = ></button>
 	<?php
-	system()
+	
 }
 else{
 	echo "Something wrong....&nbsp&nbsp&nbsp||||||||||||||||||ω・｀)ノ";
