@@ -1,3 +1,3 @@
 <?php
-hi
+	echo $_POST['asdf'];
 ?>
