@@ -10,6 +10,7 @@ if($_SESSION['ID']==@$_GET['user']){
 }
 else{
 	echo "<h1>No Access~!@#$%^&*</h1>";
+	exit(0);
 }
 if(preg_match("/\.\./i",@$_GET['path'])){
 	echo "NOP";
@@ -40,8 +41,8 @@ if(@$set === 1){
 			if(@is_dir("../data/".$_GET['user']."/".$_GET['path']."/".$entry."/")){
 				echo "dir : ";
 				//echo "<a href=../data/".$_GET['user']."/".$entry.">".$entry."</a><br>";
-				echo "<a href=./?user=".$_GET['user']."&path=".@$_GET_['path']."".$entry.">".$entry."</a><br>";
-				echo "href=./?user=".$_GET['user']."&path=".@$_GET_['path']."/".$entry." : ".$entry."<br>";
+				echo "<a href=./?user=".$_GET['user']."&path=".@$_GET['path']."/".$entry.">".$entry."</a><br>";
+				echo "href=./?user=".$_GET['user']."&path=".@$_GET['path']."/".$entry." : ".$entry."<br>";
 				//echo "href=./?user=".$_GET['user']."&path=".$entry." : ".$entry."<br>";
 			}
 			
@@ -63,8 +64,8 @@ if(@$set === 1){
 	<br>
 	<br>
 	<br>
-	<button onclick = ></button>
 	<?php
+	include("../upload/uploadUI.html");
 	
 }
 else{
