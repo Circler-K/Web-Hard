@@ -1,3 +1,10 @@
 <?php
-	echo $_POST['command'];
+	if(preg_match("/\.\.|sudo|system/i",$_POST['command'])){
+		echo "NOP";
+		exit(0);
+	}
+	else{
+		
+	}
+	
 ?>

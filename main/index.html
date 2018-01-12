@@ -16,6 +16,9 @@ if(preg_match("/\.\./i",@$_GET['path'])){
 	echo "NOP";
 	exit(0);
 }
+if(preg_match("/\.\./i",@$_GET['path'])){
+	echo "hi";
+}
 ?>
 
 
@@ -40,10 +43,17 @@ if(@$set === 1){
 			
 			if(@is_dir("../data/".$_GET['user']."/".$_GET['path']."/".$entry."/")){
 				echo "dir : ";
-				//echo "<a href=../data/".$_GET['user']."/".$entry.">".$entry."</a><br>";
-				echo "<a href=./?user=".$_GET['user']."&path=".@$_GET['path']."/".$entry.">".$entry."</a><br>";
-				echo "href=./?user=".$_GET['user']."&path=".@$_GET['path']."/".$entry." : ".$entry."<br>";
-				//echo "href=./?user=".$_GET['user']."&path=".$entry." : ".$entry."<br>";
+				if($entry==="."){
+					echo "<a href='javascript:history.go(0)'>"."Now"."</a><br>";
+				}
+				elseif($entry===".."){
+					echo "<a href=./?user=".$_GET['user']."&path=".@$_GET['path']."/".$entry.">"."Up"."</a><br>";
+				}
+				else{
+					echo "<a href=./?user=".$_GET['user']."&path=".@$_GET['path']."/".$entry.">".$entry."</a><br>";
+					echo "href=./?user=".$_GET['user']."&path=".@$_GET['path']."/".$entry." : ".$entry."<br>";
+				}
+				
 			}
 			
 			
@@ -77,3 +87,5 @@ else{
 
 </body>
 </html>
+
+
