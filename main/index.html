@@ -4,6 +4,7 @@ if(!$_SESSION){ // if not logined
 		echo "<script>";
 		echo "alert('U Need Login'); history.go(-1);"; // NO access for none logined user
 		echo "</script>";
+		exit(0);
 }
 if($_SESSION['ID']==@$_GET['user']){
 	$set = 1;
@@ -43,13 +44,13 @@ if(@$set === 1){
 			
 			if(@is_dir("../data/".$_GET['user']."/".$_GET['path']."/".$entry."/")){
 				echo "dir : ";
-				if($entry==="."){
+				if($entry==="."){ //현재폴더 
 					echo "<a href='javascript:history.go(0)'>"."Now"."</a><br>";
 				}
 				elseif($entry===".."){
-					echo "<a href=./?user=".$_GET['user']."&path=".@$_GET['path']."/".$entry.">"."Up"."</a><br>";
+					echo "<a href=./?user=".$_GET['user']."&path=".preg_replace("/\/([[A-Za-z0-9_])*$/i", ""/*이것도 정규식?*/, @$_GET['path']).">"."Up"."</a><br>";
 				}
-				else{
+				else{ // 하위~폴더
 					echo "<a href=./?user=".$_GET['user']."&path=".@$_GET['path']."/".$entry.">".$entry."</a><br>";
 					echo "href=./?user=".$_GET['user']."&path=".@$_GET['path']."/".$entry." : ".$entry."<br>";
 				}
@@ -58,7 +59,7 @@ if(@$set === 1){
 			
 			
 			
-			else{
+			else{ // 그냥 다운로드함
 				echo "file : ";
 				echo "<a href=../data/".$_GET['user']."/".$entry.">".$entry."</a><br>";
 			}
@@ -82,6 +83,7 @@ if(@$set === 1){
 else{
 	echo "Something wrong....&nbsp&nbsp&nbsp||||||||||||||||||ω・｀)ノ";
 	echo "<a href='../index.html' ><button>main</button></a>";
+	exit(0);
 }
 ?>
 

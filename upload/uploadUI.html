@@ -1,5 +1,7 @@
 <form enctype='multipart/form-data' action='../upload/upload.php' method='post'>
-	<input type='file' name='uploaded_file'>
+	<input type='file' name='myfile'>
+	<input type='hidden' name='user' value='<?php echo $_GET['user']; ?>'>
+	<input type='hidden' name='path' value='<?php echo $_GET['path']; ?>'>
 	<!-- <input type='text' name='asdf' placeholder='upload file'> -->
 	<button>Send</button>
 </form>

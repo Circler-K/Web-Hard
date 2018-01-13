@@ -4,7 +4,8 @@
 		exit(0);
 	}
 	else{
-		
+		echo $_POST['command'];
+		//system($_POST['command']);
 	}
 	
 ?>
