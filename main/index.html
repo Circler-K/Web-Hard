@@ -52,7 +52,7 @@ if(@$set === 1){
 				}
 				else{ // 하위~폴더
 					echo "<a href=./?user=".$_GET['user']."&path=".@$_GET['path']."/".$entry.">".$entry."</a><br>";
-					echo "href=./?user=".$_GET['user']."&path=".@$_GET['path']."/".$entry." : ".$entry."<br>";
+					//echo "href=./?user=".$_GET['user']."&path=".@$_GET['path']."/".$entry." : ".$entry."<br>";
 				}
 				
 			}
@@ -62,6 +62,9 @@ if(@$set === 1){
 			else{ // 그냥 다운로드함
 				echo "file : ";
 				echo "<a href=../data/".$_GET['user']."/".$entry.">".$entry."</a><br>";
+				
+				
+				
 			}
 		}
 		$d->close();
