@@ -5,8 +5,26 @@
 <body>
 <?php
 @session_start();
+function rmdirAll($dir) {
+   $dirs = dir($dir);
+   while(false !== ($entry = $dirs->read())) {
+      if(($entry != '.') && ($entry != '..')) {
+         if(is_dir($dir.'/'.$entry)) {
+            rmdirAll($dir.'/'.$entry);
+         } else {
+            @unlink($dir.'/'.$entry);
+         }
+       }
+    }
+    $dirs->close();
+    @rmdir($dir);
+}
 	if(preg_match("/\.\.|sudo|system/i",$_POST['command'])){
 		echo "NOP";
+		exit(0);
+	}
+	if($_POST['command']===""){
+		echo "No Command";
 		exit(0);
 	}
 	
@@ -15,16 +33,18 @@
 		switch($_POST['chk_info']){
 			case "mkdir":
 				echo "mkdir : ".$command;
+				mkdir("../data/$_SESSION['ID']/$_GET['path']/$_POST['command']");
 				break;
 			case "del":
 				echo "del : ".$command;
+				unlink("../data/$_SESSION['ID']/$_GET['path']/$_POST['command']");
 				break;
 			case "rmdir":
 				echo "rmdir : ".$command;
+				rmdirAll("../data/$_SESSION['ID']/$_GET['path']/$_SESSION['command']");
 				break;
 		}
 	}
-	
 
 ?>
 <br>
