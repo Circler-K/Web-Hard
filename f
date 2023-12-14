@@ -27,3 +27,5 @@ Author: Circler-K <dkdlelgksthf@gmail.com>
 Date:   Sat Dec 30 01:44:47 2017 +0900
 
     push github
+
+Laptop changed?
