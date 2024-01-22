@@ -36,3 +36,6 @@
 ## 2018-1/21
 - command 실행가능
 - maybe Done!
+
+## 2024-01-20
+- php user info module 수정했지만 적용하기엔 현행은 어려움 (서버 x, DB x)
